@@ -1,7 +1,7 @@
 
 .ab_panel_container {
     min-height: auto;
-    padding-top: 0px; /*Larger value puts more room between panels and title */
+    padding-top: 10px; /*Larger value puts more room between panels and title */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,19 +61,17 @@
 
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
     align-items: center;
 }
 
 .choice_button {
     color: black;
-    background-color: aliceblue;
+    background-color: rgb(73, 142, 202);
     
-    height: 95%;
+    font-size: 20px;
+    height: 90%;
     width: 15%;
-    
-    gap: 60px;
-
 }
 
 .ab_option {

@@ -2,6 +2,11 @@ import { useState } from "react"
 import styles from './ABPanel.module.css'
 
 
+const choice_made = (e) => {
+    console.log(`Selected button was ${e.target.innerText}. This button belongs to Panel ${e.target.dataset.selected_panel} and has a strength of ${e.target.dataset.preference_strength}`)
+    //window.location.reload();
+}
+
 //Temporary holder for option choice strings. Done to get functionality working
 const option_strings = ["Sheds constantly", "Great with kids", "Aggressive with strangers", "10-14 pounds", "Needs daily grooming", "Drool machine", "Rarely sheds", "No children allowed"];
 
@@ -59,11 +64,11 @@ function OptionHolder(props) {
 function OptionButtonHolder() {
     return (
         <div className={styles.button_holder}>
-            <OptionButton button_text="Button 1"></OptionButton>
-            <OptionButton button_text="Button 2"></OptionButton>
-            <OptionButton button_text="Button 3"></OptionButton>
-            <OptionButton button_text="Button 4"></OptionButton>
-            <OptionButton button_text="Button 5"></OptionButton>
+            <OptionButton button_text="Definitely A" selected_panel="A" preference_strength="2"></OptionButton>
+            <OptionButton button_text="Somewhat A" selected_panel="A" preference_strength="1"></OptionButton>
+            <OptionButton button_text="No Opinion" selected_panel="N" preference_strength="0"></OptionButton>
+            <OptionButton button_text="Somewhat B" selected_panel="B" preference_strength="1"></OptionButton>
+            <OptionButton button_text="Definitely B" selected_panel="B" preference_strength="2"></OptionButton>
 
         </div>
     )
@@ -71,7 +76,7 @@ function OptionButtonHolder() {
 
 function OptionButton(props) {
     return (
-        <button className={styles.choice_button}>{props.button_text}</button>
+        <button className={styles.choice_button} data-selected_panel={props.selected_panel} data-preference_strength={props.preference_strength} onClick={(e) => choice_made(e)}>{props.button_text}</ button>
     )
 }
 
