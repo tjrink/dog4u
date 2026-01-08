@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import ABPanel from './ABPanel'
 import './App.css'
 
+//Temporary holder for option choice strings. Done to get functionality working
+const option_strings = ["Sheds constantly", "Great with kids", "Aggressive with strangers", "10-14 pounds", "Needs daily grooming", "Drool machine", "Rarely sheds", "No children allowed"];
+
+//Shuffles strings
+const shuffle = (array) => {
+  const newArray = [...array];
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
+};
+
+
 function App() {
-  const [count, setCount] = useState(0)
+  //Shuffle the option strings. Give the first half to Panel A and the second half to Panel B
+  const shuffled = shuffle(option_strings);
+  const firstFour = shuffled.slice(0, 4);
+  const lastFour = shuffled.slice(4, 8);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className='ab_panel_container'>
+      <ABPanel panel_name="Breed A" option_choices={firstFour}/>
+      <ABPanel panel_name="Breed B" option_choices={lastFour}/>
+    </div>
     </>
   )
 }
+
+
 
 export default App

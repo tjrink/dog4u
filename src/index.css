@@ -54,15 +54,39 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.ab_panel_container {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px; 
 }
+
+.ab_panel {
+  
+  width: 35vw;
+  height: 100%;
+
+  background-color: rgb(34, 104, 104);
+  
+  border: 4px solid black;
+  padding: 20px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.ab_panel h1 {
+  margin-top: 0;
+}
+
+.ab_option {
+  left: 10%;
+  width: 80%;
+  color: black;
+  background-color: rgb(152, 133, 108);
+  padding: 10px;
+  };
