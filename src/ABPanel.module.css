@@ -1,4 +1,7 @@
-/* ABPanel.module.css - Modern Clean */
+.page_title {
+  margin: 0;
+}
+
 .ab_panel_container {
     max-width: 900px;
     margin: 40px auto;

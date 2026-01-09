@@ -49,12 +49,16 @@ function ABQuiz(props) {
     };
 
     return (
-        <div className={styles.ab_panel_container}>
-            <div className={styles.ab_panel_row}>
-                <ABPanel panel_name="Breed A" option_choices={panels.a}/>
-                <ABPanel panel_name="Breed B" option_choices={panels.b}/>
+        <div>
+            <h1 className='page_title'>Would You Rather Have?</h1>
+            <div className={styles.ab_panel_container}>
+                
+                <div className={styles.ab_panel_row}>
+                    <ABPanel panel_name="Breed A" option_choices={panels.a}/>
+                    <ABPanel panel_name="Breed B" option_choices={panels.b}/>
+                </div>
+                <OptionButtonHolder onChoice={choice_made} />
             </div>
-            <OptionButtonHolder onChoice={choice_made} />
         </div>
     )
 }

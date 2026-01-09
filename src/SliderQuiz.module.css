@@ -1,0 +1,21 @@
+.slider_holder {
+    display: grid;
+    grid-template-columns: 20vw 20vw 20vw 20vw;
+    grid-template-rows: 12vh auto;
+    background-color: #687a8c;
+}
+
+.attribute_slider {
+    width: 16vw;
+    height: 10vh;
+    background-color: #c4ccd3;
+    border-radius: 2px;
+    border-style: solid;
+    border-color: slategray;
+
+}
+
+.slider_input {
+    color: black;
+    display: block;
+}
