@@ -1,84 +1,64 @@
-
+/* ABPanel.module.css - Modern Clean */
 .ab_panel_container {
-    min-height: auto;
-    padding-top: 10px; /*Larger value puts more room between panels and title */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 70px; /*Controls distance between bottom of option panels and button holder */
-
-    
-
-}
-
-.ab_panel_container h1 {
-
-    margin-bottom: 0; /*Controls distance between Panel title and choices */
-
-    padding: 10;
+    max-width: 900px;
+    margin: 40px auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 12px;
 }
 
 .ab_panel_row {
     display: flex;
-    flex-direction: row;
+    gap: 20px;
     justify-content: center;
-    gap: 60px; /* Distance between the A and B panel */
-    width: 100%;
+    margin-bottom: 30px;
 }
 
-
 .ab_panel {
-  
-    width: 30vw;
-    height: 100%;
-
-    background-color: rgb(34, 104, 104);
-
-    border: 4px solid black;
-    border-radius: 60px;
+    flex: 1;
+    background: white;
     padding: 20px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
 .ab_panel h1 {
-    margin-top: 0;
-}
-
-
-.button_holder {
-    height: 10vh;
-    width: 80vw;
-    background-color: bisque;
-    border: 2px solid black;
-    border-radius: 15px;
-    border-style: ridge;
-
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    align-items: center;
-}
-
-.choice_button {
-    color: black;
-    background-color: rgb(73, 142, 202);
-    
-    font-size: 20px;
-    height: 90%;
-    width: 15%;
+    color: #2c3e50;
+    text-align: center;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
 }
 
 .ab_option {
-    left: 10%;
-    width: 80%;
-    color: black;
-    background-color: rgb(152, 133, 108);
-    padding: 10px;
-    border-radius: 15px;
-  };
+    color:black;
+    padding: 12px;
+    margin: 8px 0;
+    background: #f1f3f5;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.button_holder {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+}
+
+.choice_button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    background: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.1s, background 0.2s;
+}
+
+.choice_button:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
