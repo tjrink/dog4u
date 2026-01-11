@@ -4,8 +4,6 @@ import styles from "./SliderQuiz.module.css";
 function SliderQuiz() {
     const attribute_names = ["Playfulness", "Energy", "Affection", "Loyalty", "Good With Children", "Drooling", "Shedding", "Trainability"];
 
-
-
     //Sets initial values of all sliders to a random number between 0 and 100
     const [allValues, setAllValues] = useState(() => {
         const initialState = {};
@@ -34,6 +32,8 @@ function SliderQuiz() {
     return (
         <div className={styles.slider_container}>
             <h1>Preference Quiz</h1>
+            <BreedsFrame></BreedsFrame>
+
             <SliderHolder 
                 attributes={attribute_names} 
                 values={allValues} 
@@ -42,6 +42,25 @@ function SliderQuiz() {
             
         </div>
     );
+}
+
+
+function BreedsFrame() {
+    return (
+        <div className={styles.breeds_frame}>
+            <BreedHolder></BreedHolder>
+            <BreedHolder></BreedHolder>
+            <BreedHolder></BreedHolder>
+        </div>
+    )
+}
+
+function BreedHolder() {
+    return (
+        <div className={styles.breed_holder}>
+            <img className={styles.breed_image} src="https://bestforpet.co.nz/wp-content/uploads/2025/07/Golden_Retriever.jpg"></img>
+        </div>
+    )
 }
 
 function SliderHolder({ attributes, values, onChange }) {
@@ -63,7 +82,7 @@ function AttributeSlider({ attribute_name, current_value, onSliderChange }) {
     return (
         <div className={styles.attribute_slider}>
             <label className={styles.slider_label}>{attribute_name}: {current_value}</label>
-            <input 
+            <input
                 type="range" 
                 min="0"
                 max="100"

@@ -1,3 +1,22 @@
+.breeds_frame {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 25px;
+}
+
+.breed_holder {
+    height: 200px;
+    width: 250px;
+    border-radius: 2px;
+    border-style: groove;
+    box-shadow: 2px 2px 2px 2px;
+}
+
+.breed_image {
+    width: 100%;
+    height: 100%;
+}
+
 .slider_holder {
     display: grid;
     grid-template-columns: 20vw 20vw 20vw 20vw;
