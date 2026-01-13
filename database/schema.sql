@@ -26,5 +26,3 @@ CREATE TABLE breed_properties (
     breed_id INTEGER REFERENCES breeds(id) ON DELETE CASCADE,
     attribute_id INTEGER REFERENCES attributes(id) ON DELETE CASCADE,
 );
-
-

@@ -32,9 +32,10 @@ app.get('/api/breeds', async (req, res) => {
 });
 
 //Get Nickname 
-app.get('/api/get_breed_nickname/:name', async (req, res) => {
+app.post('/api/get_breed_nickname', async (req, res) => {
   try {
-    const result = await pool.query('SELECT breed_nickname FROM breeds WHERE breed_name = $1', [req.params.name]);
+    const {requested_breed} = req.body;
+    const result = await pool.query('SELECT breed_nickname FROM breeds WHERE breed_name = $1', [requested_breed]);
     res.json(result.rows);
   } catch (err) {
     console.error("Database error: ", err.message);
