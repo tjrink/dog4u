@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { getSliderQuizResults } from './services/api';
-import styles from './SliderQuiz.module.css';
+import { getSliderQuizResults } from '../../services/api';
+import styles from './SliderBreedSelector.module.css';
+import SliderHolder from '../../components/SliderHolder/SliderHolder';
 
-function SliderQuiz() {
+function SliderBreedSelector() {
   const attribute_names = [
     'Playfulness',
     'Energy',
@@ -53,7 +54,7 @@ function SliderQuiz() {
 
   return (
     <div className={styles.slider_container}>
-      <h1>Preference Quiz</h1>
+      <h1>Preference Selector</h1>
       <form onSubmit={handleSubmit}>
         <SliderHolder
           attributes={attribute_names}
@@ -72,37 +73,4 @@ function SliderQuiz() {
   );
 }
 
-function SliderHolder({ attributes, values, onChange }) {
-  return (
-    <div className={styles.slider_holder}>
-      {attributes.map((text, index) => (
-        <AttributeSlider
-          key={index}
-          attribute_name={text}
-          current_value={values[text]}
-          onSliderChange={onChange}
-        />
-      ))}
-    </div>
-  );
-}
-
-function AttributeSlider({ attribute_name, current_value, onSliderChange }) {
-  return (
-    <div className={styles.attribute_slider}>
-      <label className={styles.slider_label}>
-        {attribute_name}: {current_value}
-      </label>
-      <input
-        type="range"
-        min="0"
-        max="100"
-        value={current_value}
-        data-attribute_name={attribute_name}
-        onChange={onSliderChange}
-      />
-    </div>
-  );
-}
-
-export default SliderQuiz;
+export default SliderBreedSelector;
