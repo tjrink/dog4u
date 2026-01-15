@@ -4,41 +4,47 @@ const pool = require('../db');
 // Get breed scores based on slider values
 async function getSliderQuizResults(req, res) {
   try {
-    // Reception of slider values
-    const quizData = req.body;
-
-    // Breaks down the slider value object into component categories
+    
+    //Deconstructs the request body into component variables to be sent in database request
     const {
       Playfulness,
       Energy,
       Affection,
-      ['Good With Strangers']: goodWithStrangers,
+      ['Good With Strangers']: goodWithStrangers, // Match the key from your frontend
       ['Good With Children']: goodWithChildren,
       Drooling,
       Shedding,
       Trainability,
     } = req.body;
 
-    // Sends query to database
-    // Algorithm multiplies the breed's score in a category by the user's priority level
-    // These results are summed to get the breed score
-    // Top 3 resulting breed scores are returned
-    // For "bad" categories, like drooling and shedding, the values are subtracted rather than added
+    //Sends the request to the database
+    //The algorithm multiplies the slider value by the breed's score in each category
+    //Results are summed, except for the "bad" categories are subtracted 
     const result = await pool.query(
-      'SELECT name, (affection_level * $1 + playfulness_level * $2 - drooling_level * $3 + energy_level * $4 + good_with_strangers_level * $5 + good_with_children_level * $6 - shedding_level * $7 + trainability_level * $8) AS breed_score FROM breeds ORDER BY breed_score DESC LIMIT 3',
+      `SELECT breed_id, name, breed_image, 
+      (affection_level * $1 + 
+       playfulness_level * $2 - 
+       drooling_level * $3 + 
+       energy_level * $4 + 
+       good_with_strangers_level * $5 + 
+       good_with_children_level * $6 - 
+       shedding_level * $7 + 
+       trainability_level * $8) AS breed_score 
+      FROM breeds 
+      ORDER BY breed_score DESC 
+      LIMIT 3`,
       [
-        Affection,
-        Playfulness,
-        Drooling,
-        Energy,
-        goodWithStrangers,
-        goodWithChildren,
-        Shedding,
-        Trainability,
+        Affection || 0,         // $1
+        Playfulness || 0,       // $2
+        Drooling || 0,          // $3
+        Energy || 0,            // $4
+        goodWithStrangers || 0, // $5
+        goodWithChildren || 0,  // $6
+        Shedding || 0,          // $7
+        Trainability || 0       // $8
       ]
     );
 
-    // Sends results back to the React components
     res.json({
       message: 'Data received successfully!',
       received: result.rows,
@@ -49,10 +55,11 @@ async function getSliderQuizResults(req, res) {
   }
 }
 
-// Get all breeds
+// Gets all breeds from the database
+//Not in use. Here as an easy test of the database connection
 async function getAllBreeds(req, res) {
   try {
-    const result = await pool.query('SELECT * FROM breeds');
+    const result = await pool.query('SELECT breed_id, name FROM breeds');
     res.json(result.rows);
   } catch (err) {
     console.error('Database error:', err.message);
@@ -61,6 +68,7 @@ async function getAllBreeds(req, res) {
 }
 
 // Get breed nickname
+// Not in use
 async function getBreedNickname(req, res) {
   try {
     const { requested_breed } = req.body;

@@ -2,13 +2,15 @@ import { useState } from 'react';
 import { getSliderQuizResults } from '../../services/api';
 import styles from './SliderBreedSelector.module.css';
 import SliderHolder from '../../components/SliderHolder/SliderHolder';
+import ResultsContainer from '../../components/ResultsContainer';
 
 function SliderBreedSelector() {
+  //Sets up names for attribute sliders
   const attribute_names = [
     'Playfulness',
     'Energy',
     'Affection',
-    'Loyalty',
+    'Good With Strangers',
     'Good With Children',
     'Drooling',
     'Shedding',
@@ -25,36 +27,40 @@ function SliderBreedSelector() {
   });
 
   // Function to handle app behavior when a slider changes
-  const slider_change = (event) => {
-    const name = event.target.dataset.attribute_name;
-    const value = parseInt(event.target.value);
+    const slider_change = (event) => {
+      const name = event.target.dataset.attribute_name;
+      const value = parseInt(event.target.value);
 
-    setAllValues((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+      setAllValues((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    };
 
-  // Submit slider values and show results ---
+  // Submit slider values and show results
   const [results, setResults] = useState(null);
 
-  const handleSubmit = async (e) => {
+//Sends current slider values to the quiz API
+//API calculates results and sends back the data set
+const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const data = await getSliderQuizResults(allValues);
-      if (data.error) {
-        setResults([{ name: `Error: ${data.error}` }]);
-      } else {
+      
+      if (data && data.received) {
         setResults(data.received);
+      } else if (data.error) {
+        setResults([{ name: `Error: ${data.error}` }]);
       }
-    } catch {
+    } catch (err) {
+      console.error("Submission error:", err);
       setResults([{ name: 'Error fetching results' }]);
     }
   };
 
   return (
     <div className={styles.slider_container}>
-      <h1>Preference Selector</h1>
+      <ResultsContainer data={results}></ResultsContainer>
       <form onSubmit={handleSubmit}>
         <SliderHolder
           attributes={attribute_names}
@@ -64,10 +70,6 @@ function SliderBreedSelector() {
         <button type="submit" className={styles.submit_button}>
           Submit
         </button>
-        <ul>
-          {results &&
-            results.map((breed, index) => <li key={index}>{breed.name}</li>)}
-        </ul>
       </form>
     </div>
   );

@@ -1,7 +1,3 @@
-
-/**
- * This centralizes all API calls that interact with the backend.
- */
 const API_URL = 'http://localhost:5000/api';
 
 /**
