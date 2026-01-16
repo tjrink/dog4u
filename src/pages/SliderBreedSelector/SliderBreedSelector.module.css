@@ -38,3 +38,124 @@
     color: black;
     display: block;
 }
+
+.submit_button {
+    width: 100px;
+    height: 40px;
+    background-color: rgb(10, 24, 36);
+}
+
+.weight_filter_box {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    background-color: #687a8c; /* Matches your slider_holder */
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 4px 4px 0 0;
+    border-bottom: 2px solid slategray;
+}
+
+.weight_input_group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.weight_input {
+    width: 120px;
+    height: 35px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid slategray;
+    background-color: #c4ccd3; /* Matches your attribute_slider */
+    color: #1a1a1a;
+    font-size: 1rem;
+    outline: none;
+}
+
+.weight_input:focus {
+    border-color: #0a1824;
+    box-shadow: 0 0 5px rgba(10, 24, 36, 0.5);
+}
+
+/* Chrome, Safari, Edge, Opera - Remove arrows */
+.weight_input::-webkit-outer-spin-button,
+.weight_input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.filter_bar {
+    display: flex;
+    width: 100%;
+    background-color: #687a8c; /* Matches your slider_holder */
+    padding: 15px;
+    box-sizing: border-box;
+    border-bottom: 2px solid slategray;
+    color: white;
+}
+
+.filter_section_30 {
+    width: 30%;
+    padding: 0 10px;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.filter_section_40 {
+    width: 40%;
+    padding: 0 10px;
+}
+
+.section_title {
+    text-align: center;
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+/* Weight Inputs Layout */
+.weight_inputs_row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.weight_input {
+    width: 70px;
+    height: 30px;
+    background-color: #c4ccd3;
+    border: 1px solid slategray;
+    border-radius: 2px;
+    text-align: center;
+}
+
+/* Checkbox Layouts */
+.checkbox_group_row {
+    display: flex;
+    justify-content: space-around;
+    font-size: 0.85rem;
+}
+
+.checkbox_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+    font-size: 0.8rem;
+}
+
+.checkbox_label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.checkbox_label input {
+    cursor: pointer;
+    accent-color: #0a1824; /* Dark blue to match your submit button */
+}

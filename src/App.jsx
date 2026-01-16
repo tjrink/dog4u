@@ -10,7 +10,7 @@ function App() {
       <nav
         style={{
           padding: '20px',
-          background: '#eee',
+          background: '#392424',
           display: 'flex',
           gap: '15px',
         }}
