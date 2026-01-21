@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-linear-to-br from-white via-blue-50 to-slate-100 flex flex-col font-sans">
-      <main className="flex flex-col md:flex-row items-center justify-center flex-1 px-6 py-16 gap-16">
+    <div className="min-h-screen flex flex-col font-sans w-full">
+      <main className="flex flex-col md:flex-row items-center justify-center flex-1 px-6 py-16 gap-16 w-full">
         <div className="flex flex-col items-center max-w-xl">
           <h1 className="text-5xl md:text-6xl font-extrabold text-blue-900 mb-6 leading-tight">
             Your Perfect Dog
