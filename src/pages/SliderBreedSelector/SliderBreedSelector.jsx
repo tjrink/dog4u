@@ -7,9 +7,12 @@ import ResultsContainer from '../../components/ResultsContainer';
 const coat_lengths = ['Short', 'Medium', 'Long'];
 const coat_types = ['Curly', 'Dense', 'Flat', 'Rough', 'Silky', 'Smooth', 'Straight', 'Wavy', 'Wiry'];
 const attribute_names = [
-  'Playfulness', 'Energy', 'Affection', 'Good With Strangers',
-  'Good With Children', 'Drooling', 'Shedding', 'Trainability',
+  'Playfulness', 'Obedicence', 'Affection', 
+  'Good With Strangers', 'Good With Children', 'Good With Pets',
+  'Drooling', 'Shedding', 'Barking',
+  'Trainability', 'Protective', 'Energy' 
 ];
+const misc_attr = ["Apartment Friendly", "First Time Owner"];
 
 function SliderBreedSelector() {
 
@@ -21,6 +24,7 @@ function SliderBreedSelector() {
     const initialState = { minWeight: '10', maxWeight: '200' };
     coat_lengths.forEach(len => { initialState[`${len.toLowerCase()}Coat`] = true; });
     coat_types.forEach(type => { initialState[`${type.toLowerCase()}Coat`] = true; });
+    misc_attr.forEach(att => { initialState[`${att.toLowerCase().replaceAll(' ', '_')}`] = true; });
     attribute_names.forEach(attr => { initialState[attr] = Math.floor(Math.random() * 100); });
     return initialState;
   });
@@ -57,6 +61,7 @@ function SliderBreedSelector() {
         <WeightFilter allValues={allValues} handleChange={handleChange}></WeightFilter>
         <CoatLengthFilter allValues={allValues} handleChange={handleChange}></CoatLengthFilter>
         <CoatTypeFilter allValues={allValues} handleChange={handleChange}></CoatTypeFilter>
+        <MiscFilter allValues={allValues} handleChange={handleChange}></MiscFilter>
       </div>
 
       {/* Attribute Slider holder */}
@@ -79,7 +84,7 @@ function SliderBreedSelector() {
 
 function WeightFilter({ allValues, handleChange }) {
   return (
-    <div className="w-full md:w-[30%]">
+    <div className="w-full md:w-[25%]">
       <h4 className="text-amber-400 font-semibold uppercase tracking-wider text-sm mb-4">Weight (lbs)</h4>
       <div className="flex gap-2">
         <input
@@ -105,7 +110,7 @@ function WeightFilter({ allValues, handleChange }) {
 
 function CoatLengthFilter({ allValues, handleChange }) {
   return (
-    <div className="w-full md:w-[30%]">
+    <div className="w-full md:w-[25%]">
       <h4 className="text-amber-400 font-semibold uppercase tracking-wider text-sm mb-4">Coat Length</h4>
       <div className="flex flex-wrap gap-4">
         {coat_lengths.map((len) => (
@@ -127,7 +132,7 @@ function CoatLengthFilter({ allValues, handleChange }) {
 
 function CoatTypeFilter({ allValues, handleChange }) {
   return (
-        <div className="w-full md:w-[40%]">
+        <div className="w-full md:w-[30%]">
           <h4 className="text-amber-400 font-semibold uppercase tracking-wider text-sm mb-4">Coat Type</h4>
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-2">
             {coat_types.map((type) => (
@@ -147,5 +152,26 @@ function CoatTypeFilter({ allValues, handleChange }) {
   )
 }
 
+function MiscFilter( {allValues, handleChange} ) {
+  return (
+        <div className="w-full md:w-[30%]">
+          <h4 className="text-amber-400 font-semibold uppercase tracking-wider text-sm mb-4">Coat Type</h4>
+          <div className="grid grid-cols-1 lg:grid-cols-1 gap-2">
+            {misc_attr.map((att) => (
+              <label key={att} className="flex items-center gap-2 cursor-pointer text-sm hover:text-amber-200 transition-colors">
+                <input
+                  name={`${att.toLowerCase().replaceAll(' ', '_')}`}
+                  type="checkbox"
+                  checked={allValues[`${att.toLowerCase().replaceAll(' ', '_')}`]}
+                  onChange={handleChange}
+                  className="w-4 h-4 accent-amber-400"
+                />
+                {att}
+              </label>
+            ))}
+          </div>
+        </div>
+  )
+  }
 
 export default SliderBreedSelector;
