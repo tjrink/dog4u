@@ -4,24 +4,13 @@ import HomePage from './pages/Home/HomePage';
 import './App.css';
 import SliderBreedSelector from './pages/SliderBreedSelector/SliderBreedSelector';
 import NotFound from './pages/NotFound';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <div className="min-h-screen bg-neutral-900">
       <BrowserRouter>
-        <nav
-          style={{
-            padding: '20px',
-            background: '#eee',
-            display: 'flex',
-            gap: '15px',
-          }}
-        >
-          <Link to="/">Home</Link>
-          <Link to="/quiz">AB Quiz</Link>
-          <Link to="/slider">Slider Quiz</Link>
-        </nav>
-
+        <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/slider" element={<SliderBreedSelector />} />
