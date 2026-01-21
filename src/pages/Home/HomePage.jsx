@@ -31,7 +31,7 @@ export default function HomePage() {
         {/* Image removed for cleaner layout */}
       </main>
       <footer className="text-center text-slate-500 text-sm py-6 border-t border-slate-200 bg-white/60">
-        &copy; {new Date().getFullYear()} Dog4U. All rights reserved.
+        &copy; {new Date().getFullYear()} Your Perfect Dog. All rights reserved.
       </footer>
     </div>
   );
