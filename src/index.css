@@ -11,13 +11,3 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-html,
-body {
-  min-height: 100vh;
-  background-color: #171717;
-}
-
-.page_title {
-  margin-top: 0;
-}

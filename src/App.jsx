@@ -8,7 +8,7 @@ import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <div className="min-h-screen bg-neutral-900">
+    <div className="min-h-screen bg-gradient-to-br from-mint via-sky to-apricot font-sans">
       <BrowserRouter>
         <Navbar />
         <Routes>
