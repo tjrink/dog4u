@@ -3,8 +3,8 @@ const pool = require('../db');
 
 // Get breed scores based on slider values
 async function getSliderQuizResults(req, res) {
-  console.log("Console logging req: ", req);
   
+  console.log("Slider got: ", req.body);
   try {
 
     //Deconstructs the request body into component variables to be sent in database request
@@ -14,9 +14,13 @@ async function getSliderQuizResults(req, res) {
       Affection,
       ['Good With Strangers']: goodWithStrangers, // Match the key from your frontend
       ['Good With Children']: goodWithChildren,
+      ['Good With Pets']: goodWithPets,
       Drooling,
       Shedding,
       Trainability,
+      Obedience,
+      Protective,
+      Barking,
       shortCoat,
       mediumCoat,
       longCoat,
@@ -30,15 +34,22 @@ async function getSliderQuizResults(req, res) {
       smoothCoat,
       straightCoat,
       wavyCoat,
-      wiryCoat
+      wiryCoat,
+      first_time_owner,
+      apartment_friendly,
     } = req.body;
+
     //Sends the request to the database
     //The algorithm multiplies the slider value by the breed's score in each category
     //Results are summed, except for the "bad" categories are subtracted 
     const result = await pool.query(
       `WITH weight_filter AS (
-        SELECT * FROM breeds WHERE min_weight_female >= $12 AND max_weight_female <= $13
-      ),
+  SELECT * FROM breeds 
+  WHERE min_weight_female >= $12 
+    AND max_weight_female <= $13
+    AND ($27 = false OR first_time_suitability = 'Suitable') 
+    AND ($28 = false OR apartment_level > 3)
+),
       coat_filter AS (
         SELECT * FROM weight_filter WHERE (
           (short_coat = true AND $9 = true) OR 
@@ -65,7 +76,11 @@ async function getSliderQuizResults(req, res) {
         drooling_level * $3 + 
         energy_level * $4 + 
         good_with_strangers_level * $5 + 
-        good_with_children_level * $6 - 
+        good_with_children_level * $6 +
+        good_with_pets_level * $23 + 
+        obedience_level * $24 + 
+        protective_level * $25 -
+        barking_level * $26 -
         shedding_level * $7 + 
         trainability_level * $8) AS breed_score 
         FROM coat_type_filter 
@@ -93,8 +108,13 @@ async function getSliderQuizResults(req, res) {
         smoothCoat,             // $19
         straightCoat,           // $20
         wavyCoat,               // $21
-        wiryCoat                // $22
-
+        wiryCoat,                // $22
+        goodWithPets || 0,      // $23
+        Obedience || 0,           // $24
+        Protective || 0,        // $25
+        Barking || 0,            // $26
+        first_time_owner || 0,  // $27
+        apartment_friendly || 0 // $28
       ]
     );
 
