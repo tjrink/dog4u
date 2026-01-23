@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { getSliderQuizResults } from '../../services/api';
 import SliderHolder from '../../components/SliderHolder/SliderHolder';
 import ResultsContainer from '../../components/ResultsContainer';
@@ -33,6 +33,8 @@ const attribute_names = [
 const misc_attr = ['Apartment Friendly', 'First Time Owner'];
 
 function SliderBreedSelector() {
+  // Ref for results section
+  const resultsRef = useRef(null);
   //Sets the initial values for all user inputs
   //Weight range is set from 10 to 200
   //Coat types and lengths are set to true by default
@@ -77,10 +79,17 @@ function SliderBreedSelector() {
     }
   };
 
+  // Scroll to results section when results change
+  useEffect(() => {
+    if (results !== null && resultsRef.current) {
+      resultsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [results]);
+
   return (
     <div className="mt-8 p-8 bg-white/80 rounded-2xl shadow-xl border border-brand-border w-full max-w-7xl mx-auto text-brand-primary">
       {/* Results Section */}
-      <div className="mb-10">
+      <div className="mb-10" ref={resultsRef}>
         <h2 className="text-2xl font-extrabold mb-4 text-brand-primary">
           Results
         </h2>
