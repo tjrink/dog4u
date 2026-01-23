@@ -78,7 +78,7 @@ function SliderBreedSelector() {
   };
 
   return (
-    <div className="p-8 bg-white/80 rounded-2xl shadow-xl border border-brand-border w-full max-w-7xl mx-auto text-brand-primary">
+    <div className="mt-8 p-8 bg-white/80 rounded-2xl shadow-xl border border-brand-border w-full max-w-7xl mx-auto text-brand-primary">
       {/* Results Section */}
       <div className="mb-10">
         <h2 className="text-2xl font-extrabold mb-4 text-brand-primary">
