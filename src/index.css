@@ -1,13 +1,13 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-brand-primary: #1e3a8a; /* Main color: Used for primary headings, key highlights, and important UI elements (e.g., main titles, active nav links) */
-  --color-brand-secondary: #334155; /* Secondary color: Used for subtitles, secondary headings, and supporting text (e.g., descriptions) */
-  --color-brand-btn: #2563eb; /* Primary button background: Used for main buttons and interactive elements */
-  --color-brand-btn-hover: #1d4ed8; /* Button hover state: Used for the background of primary buttons on hover/focus/active */
-  --color-brand-btn-text: #ffffff; /* Button text: Used for text inside primary buttons*/
-  --color-brand-disabled: #e5e7eb; /* Disabled button background: Used for buttons in a disabled state */
-  --color-brand-disabled-text: #6b7280; /* Disabled button text: Used for text inside disabled buttons */
-  --color-brand-border: #d1d5db; /* Border color: Used for dividing lines, card borders, and input borders */
-  --color-brand-footer-text: #6b7280; /* Footer and muted text: Used for footer content */
+  --color-brand-primary: #1e3a8a; /* Main brand color: Use for primary headings, key highlights, and important UI elements (e.g., main titles, active nav links) */
+  --color-brand-secondary: #334155; /* Secondary text: Use for subtitles, secondary headings, and supporting text (e.g., descriptions, less prominent labels) */
+  --color-brand-btn: #2563eb; /* Primary button background: Use for main call-to-action buttons and interactive elements */
+  --color-brand-btn-hover: #1d4ed8; /* Button hover state: Use for the background of primary buttons on hover/focus/active */
+  --color-brand-btn-text: #ffffff; /* Button text: Use for text/icons inside primary buttons to ensure contrast */
+  --color-brand-disabled: #e5e7eb; /* Disabled button background: Use for buttons or controls in a disabled state */
+  --color-brand-disabled-text: #6b7280; /* Disabled button text: Use for text/icons inside disabled buttons or controls */
+  --color-brand-border: #d1d5db; /* Border color: Use for dividing lines, card borders, input borders, and subtle UI outlines */
+  --color-brand-footer-text: #6b7280; /* Footer and muted text: Use for footer content, copyright, and other low-emphasis text */
 }
