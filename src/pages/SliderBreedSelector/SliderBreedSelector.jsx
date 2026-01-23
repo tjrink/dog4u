@@ -79,42 +79,58 @@ function SliderBreedSelector() {
 
   return (
     <div className="p-8 bg-white/80 rounded-2xl shadow-xl border border-brand-border w-full max-w-7xl mx-auto text-brand-primary">
-      <ResultsContainer data={results} />
-
-      {/* Filter Bar - Contains weight, coat type and coat length filters */}
-      <div className="flex flex-col md:flex-row gap-6 bg-brand-disabled/60 p-6 rounded-xl border border-brand-border mb-8">
-        <WeightFilter
-          allValues={allValues}
-          handleChange={handleChange}
-        ></WeightFilter>
-        <CoatLengthFilter
-          allValues={allValues}
-          handleChange={handleChange}
-        ></CoatLengthFilter>
-        <CoatTypeFilter
-          allValues={allValues}
-          handleChange={handleChange}
-        ></CoatTypeFilter>
-        <MiscFilter
-          allValues={allValues}
-          handleChange={handleChange}
-        ></MiscFilter>
+      {/* Results Section */}
+      <div className="mb-10">
+        <h2 className="text-2xl font-extrabold mb-4 text-brand-primary">
+          Results
+        </h2>
+        <ResultsContainer data={results} />
       </div>
 
-      {/* Attribute Slider holder */}
-      <form onSubmit={handleSubmit} className="space-y-8">
-        <SliderHolder
-          attributes={attribute_names}
-          values={allValues}
-          onChange={handleChange}
-        />
-        <button
-          type="submit"
-          className="w-full py-4 bg-brand-btn hover:bg-brand-btn-hover text-brand-btn-text text-lg font-bold rounded-xl transition-transform active:scale-95 shadow-lg shadow-brand-btn/10"
-        >
-          Find My Perfect Breed
-        </button>
-      </form>
+      {/* Physical Traits Section */}
+      <div className="mb-10">
+        <h2 className="text-xl font-bold mb-4 text-brand-primary">
+          Physical Traits
+        </h2>
+        <div className="flex flex-col md:flex-row gap-6 bg-brand-disabled/60 p-6 rounded-xl border border-brand-border">
+          <WeightFilter
+            allValues={allValues}
+            handleChange={handleChange}
+          ></WeightFilter>
+          <CoatLengthFilter
+            allValues={allValues}
+            handleChange={handleChange}
+          ></CoatLengthFilter>
+          <CoatTypeFilter
+            allValues={allValues}
+            handleChange={handleChange}
+          ></CoatTypeFilter>
+          <MiscFilter
+            allValues={allValues}
+            handleChange={handleChange}
+          ></MiscFilter>
+        </div>
+      </div>
+
+      {/* Personality Traits Section */}
+      <div className="mb-10">
+        <h2 className="text-xl font-bold mb-4 text-brand-primary">
+          Personality Traits
+        </h2>
+        <form onSubmit={handleSubmit} className="space-y-8">
+          <SliderHolder
+            attributes={attribute_names}
+            values={allValues}
+            onChange={handleChange}
+          />
+          <button
+            type="submit"
+            className="w-full py-4 bg-brand-btn hover:bg-brand-btn-hover text-brand-btn-text text-lg font-bold rounded-xl transition-transform active:scale-95 shadow-lg shadow-brand-btn/10"
+          >
+            Find My Perfect Breed
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
