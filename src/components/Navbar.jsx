@@ -12,7 +12,7 @@ export default function Navbar() {
   const location = useLocation();
 
   return (
-    <div className="relative w-full bg-neutral-900 shadow-inner">
+    <div className="relative w-full bg-brand-primary shadow-inner">
       <nav>
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
@@ -23,7 +23,7 @@ export default function Navbar() {
                 aria-controls="mobile-menu"
                 aria-expanded={mobileOpen}
                 onClick={() => setMobileOpen((open) => !open)}
-                className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500"
+                className="relative inline-flex items-center justify-center rounded-md p-2 text-brand-btn-text hover:bg-brand-btn-hover hover:text-brand-btn-text focus:outline-2 focus:-outline-offset-1 focus:outline-brand-primary"
               >
                 <span className="absolute -inset-0.5"></span>
                 <span className="sr-only">Open main menu</span>
@@ -70,10 +70,10 @@ export default function Navbar() {
                       aria-current={
                         location.pathname === link.to ? 'page' : undefined
                       }
-                      className={`rounded-lg px-4 py-2 text-sm font-bold transition-colors ${
+                      className={`rounded-lg px-4 py-2 text-base font-bold transition-colors border border-transparent ${
                         location.pathname === link.to
-                          ? 'bg-white/10 text-white shadow-inner'
-                          : 'text-white/80 hover:bg-white/10 hover:text-white'
+                          ? 'bg-brand-btn text-brand-btn-text shadow-inner border-brand-btn'
+                          : 'text-brand-btn-text/80 hover:bg-brand-btn-hover hover:text-brand-btn-text'
                       }`}
                     >
                       {link.name}
@@ -96,10 +96,10 @@ export default function Navbar() {
                   aria-current={
                     location.pathname === link.to ? 'page' : undefined
                   }
-                  className={`block rounded-lg px-4 py-2 text-base font-bold transition-colors ${
+                  className={`block rounded-lg px-4 py-2 text-lg font-bold transition-colors border border-transparent ${
                     location.pathname === link.to
-                      ? 'bg-white/10 text-white shadow-inner'
-                      : 'text-white/80 hover:bg-white/10 hover:text-white'
+                      ? 'bg-brand-btn text-brand-btn-text shadow-inner border-brand-btn'
+                      : 'text-brand-btn-text/80 hover:bg-brand-btn-hover hover:text-brand-btn-text'
                   }`}
                   onClick={() => setMobileOpen(false)}
                 >
